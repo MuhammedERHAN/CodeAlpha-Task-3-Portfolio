@@ -1,0 +1,1974 @@
+<!doctype html>
+<html
+  lang="en"
+  class="scroll-smooth selection:bg-accent-500/30 selection:text-white"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammed Erhan — Frontend Developer &amp; MERN Stack Student</title>
+    <meta
+      name="description"
+      content="Portfolio of Muhammed Erhan — Frontend Developer and MERN Stack student. Building responsive, modern, user-friendly web applications."
+    />
+    <meta name="theme-color" content="#0a0a12" />
+
+    <!-- Favicon: inline code-bracket mark, no external file needed -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a12'/%3E%3Ctext x='50' y='66' font-size='34' font-family='monospace' font-weight='700' fill='%23a78bfa' text-anchor='middle'%3E%26lt%3B%2F%26gt%3B%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Fonts: Poppins (display), Inter (body), JetBrains Mono (code accents) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: "#0a0a12",
+              surface: "#12121e",
+              "surface-light": "#1a1a2e",
+              accent: {
+                50: "#f5f3ff",
+                100: "#ede9fe",
+                200: "#ddd6fe",
+                300: "#c4b5fd",
+                400: "#a78bfa",
+                500: "#8b5cf6",
+                600: "#7c3aed",
+                700: "#6d28d9",
+              },
+              accent2: "#e879f9",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "sans-serif"],
+              display: ["Poppins", "ui-sans-serif", "sans-serif"],
+              mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+            },
+            keyframes: {
+              blob: {
+                "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.15)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-16px)" },
+              },
+              "float-chip": {
+                "0%, 100%": { transform: "translateY(0px) rotate(-2deg)" },
+                "50%": { transform: "translateY(-10px) rotate(2deg)" },
+              },
+              blink: { "0%, 100%": { opacity: 1 }, "50%": { opacity: 0 } },
+            },
+            animation: {
+              blob: "blob 10s infinite",
+              "blob-delay": "blob 10s infinite 2s",
+              float: "float 6s ease-in-out infinite",
+              "float-chip": "float-chip 5s ease-in-out infinite",
+              "float-chip-delay": "float-chip 5.5s ease-in-out infinite 1s",
+              blink: "blink 1s step-end infinite",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* ---------- 1. Custom scrollbar ---------- */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a12;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #3f3f52;
+        border-radius: 9999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #8b5cf6;
+      }
+      html {
+        scrollbar-color: #3f3f52 #0a0a12;
+        scrollbar-width: thin;
+        scroll-behavior: smooth;
+      }
+
+      /* ---------- 2. Dark-theme autofill fix ---------- */
+      input:-webkit-autofill,
+      textarea:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px #14141f inset !important;
+        -webkit-text-fill-color: #e5e7eb !important;
+        transition: background-color 9999s ease-in-out 0s;
+      }
+
+      /* ---------- 3. Reduced motion safety net ---------- */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* ---------- 4. Subtle noise texture (very low opacity) ---------- */
+      .noise-bg {
+        position: relative;
+      }
+      .noise-bg::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+      .noise-bg > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ---------- 5. Reused component classes ---------- */
+      .nav-link {
+        color: #9ca3af;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        position: relative;
+      }
+      .nav-link:hover {
+        color: #e5e7eb;
+      }
+      .nav-link.active {
+        color: #c4b5fd;
+      }
+      .nav-link.active::after {
+        content: "";
+        position: absolute;
+        left: 15%;
+        width: 70%;
+        bottom: -7px;
+        height: 1px;
+        border-radius: 9999px;
+        background: linear-gradient(90deg, #8b5cf6, #c084fc);
+        box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+      }
+
+      .mobile-nav-link {
+        display: block;
+        padding: 0.7rem 1rem;
+        border-radius: 0.75rem;
+        color: #d1d5db;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
+      }
+      .mobile-nav-link:hover,
+      .mobile-nav-link.active {
+        background-color: rgba(139, 92, 246, 0.12);
+        color: #c4b5fd;
+      }
+
+      .social-icon {
+        transition:
+          color 0.25s ease,
+          transform 0.25s ease;
+      }
+      .social-icon:hover {
+        color: #c4b5fd;
+        transform: translateY(-3px);
+      }
+
+      .quick-info-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 0.65rem;
+        background: rgba(139, 92, 246, 0.12);
+        color: #c4b5fd;
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        padding: 0.9rem 1.1rem;
+        transition:
+          border-color 0.25s ease,
+          transform 0.25s ease;
+      }
+      .contact-row:hover {
+        border-color: rgba(167, 139, 250, 0.4);
+        transform: translateX(4px);
+      }
+
+      .skill-card {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border-radius: 1.25rem;
+        padding: 1.75rem;
+        transition:
+          border-color 0.3s ease,
+          transform 0.3s ease;
+      }
+      .skill-card:hover {
+        border-color: rgba(167, 139, 250, 0.35);
+        transform: translateY(-4px);
+      }
+      .skill-card-icon {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.25),
+          rgba(232, 121, 249, 0.15)
+        );
+        color: #c4b5fd;
+      }
+
+      .skill-pill {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.85rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        color: #d1d5db;
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease;
+      }
+      .skill-pill:hover {
+        border-color: rgba(167, 139, 250, 0.5);
+        color: #c4b5fd;
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border-radius: 1.5rem;
+        overflow: hidden;
+        transition:
+          border-color 0.35s ease,
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+      .project-card:hover {
+        border-color: rgba(167, 139, 250, 0.4);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 45px -20px rgba(139, 92, 246, 0.35);
+      }
+      .project-preview {
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+        background: linear-gradient(160deg, #14141f, #0d0d16);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .calc-key {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.1rem;
+        border-radius: 0.5rem;
+        font-size: 0.72rem;
+        font-family: "JetBrains Mono", monospace;
+        color: #9ca3af;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .tech-tag {
+        font-size: 0.72rem;
+        font-family: "JetBrains Mono", monospace;
+        padding: 0.3rem 0.7rem;
+        border-radius: 0.5rem;
+        background: rgba(167, 139, 250, 0.1);
+        color: #c4b5fd;
+        border: 1px solid rgba(167, 139, 250, 0.15);
+      }
+
+      .feature-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 9999px;
+        background: #a78bfa;
+        flex-shrink: 0;
+      }
+
+      .project-btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #fff;
+        background: #8b5cf6;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        transition:
+          background-color 0.25s ease,
+          transform 0.25s ease;
+      }
+      .project-btn-primary:hover {
+        background: #7c3aed;
+        transform: translateY(-2px);
+      }
+      .project-btn-secondary {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #d1d5db;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease;
+      }
+      .project-btn-secondary:hover {
+        border-color: rgba(167, 139, 250, 0.5);
+        color: #c4b5fd;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -2.05rem;
+        top: 1.6rem;
+        width: 0.85rem;
+        height: 0.85rem;
+        border-radius: 9999px;
+        background: #8b5cf6;
+        box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.18);
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin-bottom: 0.4rem;
+      }
+      .form-input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+        color: #f3f4f6;
+        outline: none;
+        transition:
+          border-color 0.25s ease,
+          background-color 0.25s ease;
+      }
+      .form-input::placeholder {
+        color: #6b7280;
+      }
+      .form-input:focus {
+        border-color: rgba(167, 139, 250, 0.6);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .form-input.input-error {
+        border-color: rgba(248, 113, 113, 0.6);
+      }
+
+      /* ---------- Scroll reveal base state ---------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ---------- Focus visibility fallback (a11y) ---------- */
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 2px solid #a78bfa;
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      /* ---------- Sticky navbar scrolled state ---------- */
+      #navbar-inner.scrolled {
+        background-color: rgba(10, 10, 18, 0.75);
+        backdrop-filter: blur(16px);
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+
+  <body
+    class="overflow-x-hidden bg-base text-gray-300 font-sans antialiased noise-bg"
+  >
+    <!--
+  ============================================================
+  📌 QUICK EDIT GUIDE — search for these and replace with your real info
+  ============================================================
+  "Your Name"                     → your full name (appears in several places)
+  "your.email@example.com"        → your real email
+  "Your City, Pakistan"           → your city
+  "Your University Name"          → your college / university
+  "yourusername" (in href links)  → your GitHub / LinkedIn username
+  "#resume-link"                  → link to your uploaded resume PDF
+  "#gallery-live" / "#gallery-repo"       → Task 1 (Image Gallery) links
+  "#calculator-live" / "#calculator-repo" → Task 2 (Calculator) links
+  ============================================================
+-->
+
+    <!-- Skip link for keyboard/screen-reader users -->
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-accent-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
+      >Skip to main content</a
+    >
+
+    <!-- Scroll progress bar -->
+    <div
+      id="progress-bar"
+      class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-accent-500 via-accent-400 to-accent2 z-[60] w-0"
+    ></div>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <header
+      id="navbar"
+      class="border-b border-white/10 backdrop-blur-xl fixed top-0 inset-x-0 z-50 transition-all duration-300"
+    >
+      <nav class="mx-auto max-w-6xl px-5 sm:px-8" aria-label="Primary">
+        <div
+          id="navbar-inner"
+          class="flex items-center justify-between rounded-2xl mt-3 px-5 py-3.5 transition-all duration-300 border border-white/5"
+        >
+          <a
+            href="#home"
+            class="font-mono text-xl sm:text-2xl font-semibold text-white tracking-tight flex items-center gap-1"
+          >
+            CODE<span class="text-accent-400">X</span>
+          </a>
+
+          <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <li><a href="#home" class="nav-link" data-nav="home">Home</a></li>
+            <li>
+              <a href="#about" class="nav-link" data-nav="about">About</a>
+            </li>
+            <li>
+              <a href="#skills" class="nav-link" data-nav="skills">Skills</a>
+            </li>
+            <li>
+              <a href="#projects" class="nav-link" data-nav="projects"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a href="#education" class="nav-link" data-nav="education"
+                >Education</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="nav-link" data-nav="contact">Contact</a>
+            </li>
+          </ul>
+
+          <a
+            href="#contact"
+            class="hidden md:inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white text-sm font-medium px-5 py-2.5 transition-colors duration-300"
+          >
+            Let's Talk
+          </a>
+
+          <button
+            id="menu-btn"
+            class="md:hidden text-gray-200 p-2 -mr-2"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              id="icon-menu"
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              id="icon-close"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div
+          id="mobile-menu"
+          class="md:hidden hidden mt-2 rounded-2xl border border-white/5 bg-surface/95 backdrop-blur-xl overflow-hidden"
+        >
+          <ul class="flex flex-col p-3 text-sm font-medium">
+            <li>
+              <a href="#home" class="mobile-nav-link" data-nav="home">Home</a>
+            </li>
+            <li>
+              <a href="#about" class="mobile-nav-link" data-nav="about"
+                >About</a
+              >
+            </li>
+            <li>
+              <a href="#skills" class="mobile-nav-link" data-nav="skills"
+                >Skills</a
+              >
+            </li>
+            <li>
+              <a href="#projects" class="mobile-nav-link" data-nav="projects"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a href="#education" class="mobile-nav-link" data-nav="education"
+                >Education</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="mobile-nav-link" data-nav="contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ===================== HERO ===================== -->
+      <section
+        id="home"
+        class="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16 scroll-mt-24"
+      >
+        <!-- Animated gradient blobs -->
+        <div class="pointer-events-none absolute inset-0 overflow-hidden">
+          <div
+            class="absolute -top-24 -left-24 w-96 h-96 bg-accent-600/30 rounded-full blur-3xl animate-blob motion-reduce:animate-none"
+          ></div>
+          <div
+            class="absolute top-1/3 -right-24 w-96 h-96 bg-accent2/20 rounded-full blur-3xl animate-blob-delay motion-reduce:animate-none"
+          ></div>
+          <div
+            class="absolute bottom-0 left-1/3 w-72 h-72 bg-accent-500/20 rounded-full blur-3xl animate-blob motion-reduce:animate-none"
+          ></div>
+          <div
+            class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(10,10,18,0.6),#0a0a12)]"
+          ></div>
+        </div>
+
+        <div
+          class="relative mx-auto max-w-6xl px-5 sm:px-8 grid md:grid-cols-2 gap-14 items-center"
+        >
+          <!-- Left: text -->
+          <div class="reveal" data-reveal>
+            <span
+              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md px-4 py-1.5 text-xs font-mono text-accent-300"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"
+              ></span>
+              Available for internships &amp; freelance
+            </span>
+
+            <p class="mt-6 font-mono text-accent-400 text-sm">Hello, I'm</p>
+            <h1
+              class="mt-2 font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-white"
+            >
+              Muhammed Erhan
+            </h1>
+            <h2
+              class="mt-4 font-display font-semibold text-xl sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-accent-300 via-accent-400 to-accent2"
+            >
+              <span id="typed-role">Frontend Developer</span
+              ><span
+                class="text-accent-400 animate-blink motion-reduce:animate-none"
+                >|</span
+              >
+            </h2>
+
+            <p class="mt-6 text-gray-400 leading-relaxed max-w-md">
+              Passionate about building responsive, modern and user-friendly web
+              applications while continuously learning new technologies.
+            </p>
+
+            <div class="mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href="#projects"
+                class="hover:-translate-y-1 hover:shadow-[0_0_35px_#8b5cf6] inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-medium px-6 py-3 transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/30 hover:-translate-y-0.5"
+              >
+                View Projects
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
+              <a
+                href="./assets/Muhammad_Erhan_Resume.pdf"
+                download
+                class="hover:-translate-y-1 inline-flex items-center gap-2 rounded-full border border-white/15 hover:border-accent-400/50 bg-white/5 backdrop-blur-md text-gray-200 font-medium px-6 py-3 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                Download Resume
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div class="mt-10 flex items-center gap-6 text-gray-500">
+              <a
+                href="https://github.com/MuhammedERHAN"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
+                class="social-icon"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+                  />
+                </svg>
+              </a>
+              <a
+                href="./assets/Muhammad_Erhan_Resume.pdf"
+                target="_blank"
+                download="Muhammad_Erhan_Resume.pdf"
+                aria-label="Download Resume"
+                class="social-icon"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 3v10m0 0l-4-4m4 4l4-4M5 17v2a2 2 0 002 2h10a2 2 0 002-2v-2"
+                  />
+                </svg>
+              </a>
+
+              <a
+                href="mailto:your.email@example.com"
+                aria-label="Send email"
+                class="social-icon"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24"
+                >
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 7l9 6 9-6"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: signature code-editor mockup -->
+          <div class="relative reveal" data-reveal data-delay="150">
+            <div
+              class="absolute -top-6 -right-4 sm:right-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-4 py-2.5 text-xs font-mono text-accent-200 animate-float-chip motion-reduce:animate-none shadow-xl"
+            >
+              ⚛️ React
+            </div>
+            <div
+              class="absolute -bottom-6 -left-4 sm:left-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-4 py-2.5 text-xs font-mono text-emerald-300 animate-float-chip-delay motion-reduce:animate-none shadow-xl"
+            >
+              🟢 Node.js
+            </div>
+
+            <div
+              class="animate-float motion-reduce:animate-none rounded-2xl border border-white/10 bg-surface/70 backdrop-blur-xl shadow-2xl shadow-black/50 overflow-hidden mx-auto max-w-md"
+            >
+              <div
+                class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/[0.03]"
+              >
+                <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-green-400/80"></span>
+                <span class="ml-3 font-mono text-xs text-gray-500"
+                  >portfolio.js</span
+                >
+              </div>
+              <div class="p-6 font-mono text-sm leading-7">
+                <p>
+                  <span class="text-accent-300">const</span>
+                  <span class="text-emerald-300">developer</span>
+                  <span class="text-gray-500">=</span>
+                  <span class="text-gray-400">{'{'}</span>
+                </p>
+                <p class="pl-4">
+                  <span class="text-sky-300">name</span
+                  ><span class="text-gray-500">:</span>
+                  <span class="text-amber-200">'Your Name'</span
+                  ><span class="text-gray-500">,</span>
+                </p>
+                <p class="pl-4">
+                  <span class="text-sky-300">role</span
+                  ><span class="text-gray-500">:</span>
+                  <span class="text-amber-200">'Frontend Developer'</span
+                  ><span class="text-gray-500">,</span>
+                </p>
+                <p class="pl-4">
+                  <span class="text-sky-300">stack</span
+                  ><span class="text-gray-500">:</span>
+                  <span class="text-gray-400">[</span
+                  ><span class="text-amber-200">'React'</span
+                  ><span class="text-gray-500">,</span>
+                  <span class="text-amber-200">'Node'</span
+                  ><span class="text-gray-500">,</span>
+                  <span class="text-amber-200">'MongoDB'</span
+                  ><span class="text-gray-400">]</span
+                  ><span class="text-gray-500">,</span>
+                </p>
+                <p class="pl-4">
+                  <span class="text-sky-300">passion</span
+                  ><span class="text-gray-500">:</span>
+                  <span class="text-amber-200">'building for the web'</span
+                  ><span class="text-gray-500">,</span>
+                </p>
+                <p class="pl-4">
+                  <span class="text-sky-300">available</span
+                  ><span class="text-gray-500">:</span>
+                  <span class="text-accent-300">true</span>
+                </p>
+                <p>
+                  <span class="text-gray-400">{'}'}</span
+                  ><span class="text-gray-500">;</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="#about"
+          aria-label="Scroll to About section"
+          class="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-gray-500 hover:text-accent-300 transition-colors"
+        >
+          <span class="text-[11px] font-mono tracking-widest">SCROLL</span>
+          <svg
+            class="w-4 h-4 animate-bounce motion-reduce:animate-none"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </a>
+      </section>
+
+      <!-- ===================== ABOUT ===================== -->
+      <section id="about" class="py-24 sm:py-32 scroll-mt-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal" data-reveal>
+            <p class="font-mono text-accent-400 text-sm">// about</p>
+            <h2
+              class="mt-2 font-display font-bold text-3xl sm:text-4xl text-white"
+            >
+              About Me
+            </h2>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-5 gap-10 items-start">
+            <div
+              class="md:col-span-3 space-y-5 text-gray-400 leading-relaxed reveal"
+              data-reveal
+            >
+              <p>
+                I am a Frontend Developer and MERN Stack student with a passion
+                for creating clean and responsive user interfaces.
+              </p>
+              <p>
+                I enjoy turning ideas into interactive web experiences using
+                HTML, Tailwind CSS, JavaScript and React.
+              </p>
+              <p>
+                Currently, I'm improving my full-stack development skills while
+                building real-world projects — including this portfolio and the
+                two projects showcased below, built during my internship at
+                <span class="text-accent-300 font-medium">CodeAlpha</span>.
+              </p>
+              <p>
+                I care about the small details — smooth interactions, accessible
+                markup and code that's easy to read six months from now.
+              </p>
+            </div>
+
+            <div
+              class="md:col-span-2 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 sm:p-7 reveal"
+              data-reveal
+              data-delay="150"
+            >
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-start gap-3">
+                  <span class="quick-info-icon">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    ><span class="block text-gray-500 text-xs">Name</span
+                    ><span class="text-gray-200">Your Name</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="quick-info-icon">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 7l9 6 9-6"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    ><span class="block text-gray-500 text-xs">Email</span
+                    ><span class="text-gray-200 break-all"
+                      >your.email@example.com</span
+                    ></span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="quick-info-icon">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M17.7 9.3a5.7 5.7 0 11-11.4 0c0-4.3 5.7-9.3 5.7-9.3s5.7 5 5.7 9.3z"
+                      />
+                      <circle cx="12" cy="9.3" r="2" />
+                    </svg>
+                  </span>
+                  <span
+                    ><span class="block text-gray-500 text-xs">Location</span
+                    ><span class="text-gray-200"
+                      >Your City, Pakistan</span
+                    ></span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="quick-info-icon">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 14l9-5-9-5-9 5 9 5zm0 0v7m-9-9.5V17m18-7.5V17"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    ><span class="block text-gray-500 text-xs">Education</span
+                    ><span class="text-gray-200"
+                      >BS Computer Science</span
+                    ></span
+                  >
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="quick-info-icon">
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8 9h8M8 13h6m-9 8l2.5-4H19a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v9a2 2 0 002 2h.5z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    ><span class="block text-gray-500 text-xs">Languages</span
+                    ><span class="text-gray-200">English, Urdu</span></span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SKILLS ===================== -->
+      <section
+        id="skills"
+        class="py-24 sm:py-32 scroll-mt-24 bg-gradient-to-b from-transparent via-surface/40 to-transparent"
+      >
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal" data-reveal>
+            <p class="font-mono text-accent-400 text-sm">// skills</p>
+            <h2
+              class="mt-2 font-display font-bold text-3xl sm:text-4xl text-white"
+            >
+              Skills &amp; Tools
+            </h2>
+          </div>
+
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="skill-card reveal hover:bg-violet-500/10" data-reveal>
+              <div class="skill-card-icon">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8 9l-4 3 4 3m8-6l4 3-4 3M13 5l-2 14"
+                  />
+                </svg>
+              </div>
+              <h3 class="mt-4 font-display font-semibold text-white">
+                Frontend
+              </h3>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="skill-pill">HTML</span>
+                <span class="skill-pill">CSS</span>
+                <span class="skill-pill">Tailwind CSS</span>
+                <span class="skill-pill">JavaScript</span>
+              </div>
+            </div>
+
+            <div
+              class="skill-card reveal hover:bg-violet-500/10"
+              data-reveal
+              data-delay="100"
+            >
+              <div class="skill-card-icon">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </div>
+              <h3 class="mt-4 font-display font-semibold text-white">
+                Currently Learning
+              </h3>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="skill-pill">React</span>
+                <span class="skill-pill">Node.js</span>
+                <span class="skill-pill">Express</span>
+                <span class="skill-pill">MongoDB</span>
+              </div>
+            </div>
+
+            <div
+              class="skill-card reveal hover:bg-violet-500/10"
+              data-reveal
+              data-delay="200"
+            >
+              <div class="skill-card-icon">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.3 21a1.9 1.9 0 003.4 0M3.3 8a8.7 8.7 0 0117.4 0c0 5.4 2.3 7 2.3 7H1s2.3-1.6 2.3-7z"
+                  />
+                </svg>
+              </div>
+              <h3 class="mt-4 font-display font-semibold text-white">Tools</h3>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">GitHub</span>
+                <span class="skill-pill">VS Code</span>
+                <span class="skill-pill">Figma</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROJECTS ===================== -->
+      <section id="projects" class="py-24 sm:py-32 scroll-mt-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal" data-reveal>
+            <p class="font-mono text-accent-400 text-sm">// projects</p>
+            <h2
+              class="mt-2 font-display font-bold text-3xl sm:text-4xl text-white"
+            >
+              Featured Projects
+            </h2>
+            <p class="mt-3 text-gray-400 max-w-xl">
+              Two projects built during my CodeAlpha Web Development internship.
+            </p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-2 gap-8">
+            <!-- Project 1: Gallery -->
+            <article class="project-card reveal" data-reveal>
+              <div class="project-preview">
+                <div
+                  class="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/5"
+                >
+                  <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"
+                  ></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-green-400/70"></span>
+                </div>
+                <div class="flex-1 grid grid-cols-3 gap-1.5 p-3">
+                  <div
+                    class="rounded-lg bg-gradient-to-br from-accent-500/40 to-accent2/30 aspect-square"
+                  ></div>
+                  <div
+                    class="rounded-lg bg-gradient-to-br from-accent2/30 to-accent-600/40 aspect-square"
+                  ></div>
+                  <div
+                    class="rounded-lg bg-gradient-to-br from-accent-400/40 to-accent-700/40 aspect-square"
+                  ></div>
+                  <div
+                    class="rounded-lg bg-gradient-to-br from-accent-600/40 to-accent-400/30 aspect-square col-span-2"
+                  ></div>
+                  <div
+                    class="rounded-lg bg-gradient-to-br from-accent2/40 to-accent-500/30 aspect-square"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="p-6 sm:p-7">
+                <h3 class="font-display font-semibold text-lg text-white">
+                  Wander Gallery
+                </h3>
+                <p class="mt-2 text-sm text-gray-400 leading-relaxed">
+                  A responsive image gallery with category filters, a smooth
+                  lightbox viewer and keyboard-friendly next/prev navigation.
+                </p>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="tech-tag">HTML</span>
+                  <span class="tech-tag">CSS</span>
+                  <span class="tech-tag">JavaScript</span>
+                </div>
+
+                <ul class="mt-4 space-y-1.5 text-sm text-gray-400">
+                  <li class="flex items-center gap-2">
+                    <span class="feature-dot"></span>Lightbox view with next /
+                    prev controls
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="feature-dot"></span>Category-based image
+                    filtering
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="feature-dot"></span>Fully responsive grid
+                    layout
+                  </li>
+                </ul>
+
+                <div class="mt-6 flex items-center gap-3">
+                  <a
+                    href="#gallery-live"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="duration-300 hover:-translate-y-1 project-btn-primary"
+                  >
+                    Live Demo
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="#gallery-repo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-btn-secondary"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: Calculator -->
+            <article class="project-card reveal" data-reveal data-delay="150">
+              <div class="project-preview">
+                <div
+                  class="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/5"
+                >
+                  <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"
+                  ></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-green-400/70"></span>
+                </div>
+                <div class="flex-1 p-4">
+                  <div
+                    class="rounded-lg bg-black/30 h-10 mb-2 flex items-center justify-end px-3 font-mono text-accent-200 text-sm"
+                  >
+                    √144 + 7²
+                  </div>
+                  <div class="grid grid-cols-4 gap-1.5">
+                    <div class="calc-key">sin</div>
+                    <div class="calc-key">cos</div>
+                    <div class="calc-key">tan</div>
+                    <div class="calc-key text-accent-300">÷</div>
+                    <div class="calc-key">7</div>
+                    <div class="calc-key">8</div>
+                    <div class="calc-key">9</div>
+                    <div class="calc-key text-accent-300">×</div>
+                    <div class="calc-key">4</div>
+                    <div class="calc-key">5</div>
+                    <div class="calc-key">6</div>
+                    <div class="calc-key text-accent-300">−</div>
+                    <div class="calc-key">1</div>
+                    <div class="calc-key">2</div>
+                    <div class="calc-key">3</div>
+                    <div class="calc-key text-accent-300">+</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6 sm:p-7">
+                <h3 class="font-display font-semibold text-lg text-white">
+                  Code X Calculator
+                </h3>
+                <p class="mt-2 text-sm text-gray-400 leading-relaxed">
+                  A scientific calculator supporting trigonometric, logarithmic
+                  and exponential functions with a clean, keyboard-accessible
+                  interface.
+                </p>
+
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="tech-tag">HTML</span>
+                  <span class="tech-tag">CSS</span>
+                  <span class="tech-tag">JavaScript</span>
+                </div>
+
+                <ul class="mt-4 space-y-1.5 text-sm text-gray-400">
+                  <li class="flex items-center gap-2">
+                    <span class="feature-dot"></span>Scientific functions: sin,
+                    cos, tan, log, √
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="feature-dot"></span>Full keyboard input support
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="feature-dot"></span>Calculation history &amp;
+                    error handling
+                  </li>
+                </ul>
+
+                <div class="mt-6 flex items-center gap-3">
+                  <a
+                    href="#calculator-live"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="duration-300 hover:-translate-y-1 project-btn-primary"
+                  >
+                    Live Demo
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="#calculator-repo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-btn-secondary"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Coming soon teaser -->
+          <div
+            class="mt-8 rounded-2xl border border-dashed border-white/10 p-6 flex flex-wrap items-center justify-between gap-4 reveal"
+            data-reveal
+          >
+            <p class="text-sm text-gray-500">More projects on the way</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-tag opacity-60">Netflix Clone</span>
+              <span class="tech-tag opacity-60">Weather App</span>
+              <span class="tech-tag opacity-60">Todo App</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== EDUCATION ===================== -->
+      <section
+        id="education"
+        class="py-24 sm:py-32 scroll-mt-24 bg-gradient-to-b from-transparent via-surface/40 to-transparent"
+      >
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal" data-reveal>
+            <p class="font-mono text-accent-400 text-sm">// education</p>
+            <h2
+              class="mt-2 font-display font-bold text-3xl sm:text-4xl text-white"
+            >
+              Education &amp; Certificates
+            </h2>
+          </div>
+
+          <div class="mt-12 max-w-2xl">
+            <ol class="relative border-l border-white/10 ml-3">
+              <li class="mb-10 ml-8 reveal" data-reveal>
+                <span class="timeline-dot"></span>
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6"
+                >
+                  <p class="font-mono text-xs text-accent-400">
+                    2022 — Present
+                  </p>
+                  <h3 class="mt-1 font-display font-semibold text-white">
+                    BS Computer Science
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-400">Your University Name</p>
+                </div>
+              </li>
+
+              <li class="mb-10 ml-8 reveal" data-reveal data-delay="100">
+                <span class="timeline-dot"></span>
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6"
+                >
+                  <p class="font-mono text-xs text-accent-400">2026</p>
+                  <h3 class="mt-1 font-display font-semibold text-white">
+                    Web Development Internship
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-400">
+                    CodeAlpha — built an image gallery, a scientific calculator
+                    and this portfolio site.
+                  </p>
+                </div>
+              </li>
+
+              <li class="ml-8 reveal" data-reveal data-delay="200">
+                <span class="timeline-dot"></span>
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6"
+                >
+                  <p class="font-mono text-xs text-accent-400">Ongoing</p>
+                  <h3 class="mt-1 font-display font-semibold text-white">
+                    Self-taught MERN Stack
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-400">
+                    Building projects while learning React, Node.js, Express and
+                    MongoDB.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONTACT ===================== -->
+      <section id="contact" class="py-24 sm:py-32 scroll-mt-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal" data-reveal>
+            <p class="font-mono text-accent-400 text-sm">// contact</p>
+            <h2
+              class="mt-2 font-display font-bold text-3xl sm:text-4xl text-white"
+            >
+              Let's Connect
+            </h2>
+            <p class="mt-3 text-gray-400 max-w-xl">
+              Have an opportunity, a project, or just want to say hi? My inbox
+              is open.
+            </p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-5 gap-8">
+            <div class="md:col-span-2 space-y-4 reveal" data-reveal>
+              <a href="mailto:your.email@example.com" class="contact-row">
+                <span class="quick-info-icon">
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 7l9 6 9-6"
+                    />
+                  </svg>
+                </span>
+                <span
+                  ><span class="block text-xs text-gray-500">Email</span
+                  ><span
+                    class="text-gray-200 group-hover:text-accent-300 transition-colors break-all"
+                    >your.email@example.com</span
+                  ></span
+                >
+              </a>
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-row"
+              >
+                <span class="quick-info-icon">
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13 7l5 5-5 5M6 7l5 5-5 5"
+                    />
+                  </svg>
+                </span>
+                <span
+                  ><span class="block text-xs text-gray-500">GitHub</span
+                  ><span
+                    class="text-gray-200 group-hover:text-accent-300 transition-colors"
+                    >github.com/yourusername</span
+                  ></span
+                >
+              </a>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-row"
+              >
+                <span class="quick-info-icon">
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="3" />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M7.5 10.5v6M7.5 7.5v.01M11.5 16.5v-3.5c0-1.4 1-2.5 2.3-2.5s2.2 1 2.2 2.5v3.5M11.5 10.5v6"
+                    />
+                  </svg>
+                </span>
+                <span
+                  ><span class="block text-xs text-gray-500">LinkedIn</span
+                  ><span
+                    class="text-gray-200 group-hover:text-accent-300 transition-colors"
+                    >linkedin.com/in/yourusername</span
+                  ></span
+                >
+              </a>
+              <a href="#" class="contact-row">
+                <span class="quick-info-icon">
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.7 9.3a5.7 5.7 0 11-11.4 0c0-4.3 5.7-9.3 5.7-9.3s5.7 5 5.7 9.3z"
+                    />
+                    <circle cx="12" cy="9.3" r="2" />
+                  </svg>
+                </span>
+                <span
+                  ><span class="block text-xs text-gray-500">Location</span
+                  ><span class="text-gray-200">Your City, Pakistan</span></span
+                >
+              </a>
+            </div>
+
+            <form
+              id="contact-form"
+              class="md:col-span-3 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 sm:p-8 space-y-5 reveal"
+              data-reveal
+              data-delay="150"
+              novalidate
+            >
+              <div>
+                <label for="name" class="form-label">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  class="form-input"
+                  placeholder="Your full name"
+                />
+              </div>
+              <div>
+                <label for="email" class="form-label">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  class="form-input"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div>
+                <label for="message" class="form-label">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="form-input resize-none"
+                  placeholder="Tell me a bit about the opportunity..."
+                ></textarea>
+              </div>
+              <button
+                id="form-submit"
+                type="submit"
+                class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 hover:bg-accent-600 text-white font-medium px-6 py-3.5 transition-all duration-300 hover:shadow-lg hover:shadow-accent-500/30 disabled:opacity-70"
+              >
+                <span id="form-submit-text">Send Message</span>
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14 5l7 7-7 7M3 12h18"
+                  />
+                </svg>
+              </button>
+              <p
+                id="form-status"
+                class="text-sm text-center h-4"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="border-t border-white/5 py-12">
+      <div
+        class="mx-auto max-w-6xl px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+      >
+        <div class="text-center sm:text-left">
+          <p class="font-display font-semibold text-white">Your Name</p>
+          <p class="text-sm text-gray-500">Frontend Developer</p>
+        </div>
+
+        <div class="flex items-center gap-5 text-gray-500">
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
+            class="social-icon"
+          >
+            <svg
+              class="w-4.5 h-4.5 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://linkedin.com/in/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+            class="social-icon"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M7.5 10.5v6M7.5 7.5v.01M11.5 16.5v-3.5c0-1.4 1-2.5 2.3-2.5s2.2 1 2.2 2.5v3.5M11.5 10.5v6"
+              />
+            </svg>
+          </a>
+          <a
+            href="mailto:your.email@example.com"
+            aria-label="Send email"
+            class="social-icon"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 7l9 6 9-6"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mt-8 pt-6 border-t border-white/5 text-center text-xs text-gray-600 font-mono"
+      >
+        Built with HTML • Tailwind CSS • JavaScript &nbsp;·&nbsp; ©
+        <span id="year"></span> Your Name. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button
+      id="back-to-top"
+      aria-label="Back to top"
+      class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-accent-500 hover:bg-accent-600 text-white shadow-lg shadow-accent-500/30 flex items-center justify-center opacity-0 pointer-events-none translate-y-3 transition-all duration-300"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 15l7-7 7 7"
+        />
+      </svg>
+    </button>
+
+    <script>
+      /* ============================================================
+   All interactivity for the portfolio
+   Sections:
+   1. Mobile menu
+   2. Sticky navbar scrolled state + scroll progress bar
+   3. Scrollspy (active nav link on scroll)
+   4. Scroll reveal animations
+   5. Back-to-top button
+   6. Hero role typing effect
+   7. Contact form (UI only — no backend)
+   8. Footer year
+   ============================================================ */
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        /* ---------- 1. Mobile menu ---------- */
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const iconMenu = document.getElementById("icon-menu");
+        const iconClose = document.getElementById("icon-close");
+
+        function openMenu() {
+          mobileMenu.classList.remove("hidden");
+          iconMenu.classList.add("hidden");
+          iconClose.classList.remove("hidden");
+          menuBtn.setAttribute("aria-expanded", "true");
+        }
+        function closeMenu() {
+          mobileMenu.classList.add("hidden");
+          iconMenu.classList.remove("hidden");
+          iconClose.classList.add("hidden");
+          menuBtn.setAttribute("aria-expanded", "false");
+        }
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.contains("hidden") ? openMenu() : closeMenu();
+        });
+        document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+        document.addEventListener("click", (e) => {
+          if (
+            !mobileMenu.classList.contains("hidden") &&
+            !mobileMenu.contains(e.target) &&
+            !menuBtn.contains(e.target)
+          ) {
+            closeMenu();
+          }
+        });
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeMenu();
+        });
+
+        /* ---------- 2. Sticky navbar + scroll progress bar ---------- */
+        const navbarInner = document.getElementById("navbar-inner");
+        const progressBar = document.getElementById("progress-bar");
+
+        function onScrollChrome() {
+          const scrollY = window.scrollY;
+          navbarInner.classList.toggle("scrolled", scrollY > 12);
+
+          const docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+          progressBar.style.width = progress + "%";
+        }
+        onScrollChrome();
+        window.addEventListener("scroll", onScrollChrome, { passive: true });
+
+        /* ---------- 3. Scrollspy ---------- */
+        const sections = document.querySelectorAll("main section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+        function setActiveLink(id) {
+          navLinks.forEach((link) =>
+            link.classList.toggle("active", link.dataset.nav === id),
+          );
+          mobileNavLinks.forEach((link) =>
+            link.classList.toggle("active", link.dataset.nav === id),
+          );
+        }
+
+        const spyObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setActiveLink(entry.target.id);
+              }
+            });
+          },
+          { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
+        );
+        sections.forEach((section) => spyObserver.observe(section));
+
+        /* ---------- 4. Scroll reveal ---------- */
+        const revealEls = document.querySelectorAll("[data-reveal]");
+
+        if (prefersReducedMotion) {
+          revealEls.forEach((el) => el.classList.add("in-view"));
+        } else {
+          const revealObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const delay = entry.target.dataset.delay || 0;
+                  setTimeout(() => {
+                    entry.target.classList.add("in-view");
+                  }, Number(delay));
+                  revealObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 },
+          );
+          revealEls.forEach((el) => revealObserver.observe(el));
+        }
+
+        /* ---------- 5. Back-to-top button ---------- */
+        const backToTop = document.getElementById("back-to-top");
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            const show = window.scrollY > 500;
+            backToTop.classList.toggle("opacity-0", !show);
+            backToTop.classList.toggle("pointer-events-none", !show);
+            backToTop.classList.toggle("translate-y-3", !show);
+          },
+          { passive: true },
+        );
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+          });
+        });
+
+        /* ---------- 6. Hero role typing effect ---------- */
+        const typedEl = document.getElementById("typed-role");
+        const roles = [
+          "Frontend Developer",
+          "MERN Stack Student",
+          "UI Enthusiast",
+        ];
+
+        if (typedEl && !prefersReducedMotion) {
+          let roleIndex = 0;
+          let charIndex = roles[0].length;
+          let deleting = false;
+
+          function typeLoop() {
+            const current = roles[roleIndex];
+
+            if (!deleting) {
+              charIndex++;
+              if (charIndex > current.length) {
+                charIndex = current.length;
+                deleting = true;
+                setTimeout(typeLoop, 1600);
+                return;
+              }
+            } else {
+              charIndex--;
+              if (charIndex < 0) {
+                charIndex = 0;
+                deleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+              }
+            }
+
+            typedEl.textContent = roles[roleIndex].slice(0, charIndex);
+            setTimeout(typeLoop, deleting ? 35 : 65);
+          }
+
+          // Start the loop after the initial static text has been shown briefly
+          charIndex = roles[0].length;
+          setTimeout(() => {
+            deleting = true;
+            typeLoop();
+          }, 2000);
+        }
+
+        /* ---------- 7. Contact form (UI only, no backend) ---------- */
+        const form = document.getElementById("contact-form");
+        const submitBtn = document.getElementById("form-submit");
+        const submitText = document.getElementById("form-submit-text");
+        const statusEl = document.getElementById("form-status");
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const nameField = document.getElementById("name");
+          const emailField = document.getElementById("email");
+          const messageField = document.getElementById("message");
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          let valid = true;
+          [nameField, emailField, messageField].forEach((field) =>
+            field.classList.remove("input-error"),
+          );
+
+          if (nameField.value.trim().length < 2) {
+            nameField.classList.add("input-error");
+            valid = false;
+          }
+          if (!emailPattern.test(emailField.value.trim())) {
+            emailField.classList.add("input-error");
+            valid = false;
+          }
+          if (messageField.value.trim().length < 5) {
+            messageField.classList.add("input-error");
+            valid = false;
+          }
+
+          if (!valid) {
+            statusEl.textContent = "Please fill in all fields correctly.";
+            statusEl.className = "text-sm text-center h-4 text-red-400";
+            return;
+          }
+
+          // NOTE: This is a UI-only simulation — no message is actually sent.
+          // To make this functional when you deploy, connect this form to a
+          // service like Formspree, EmailJS or your own backend endpoint.
+          submitBtn.disabled = true;
+          submitText.textContent = "Sending...";
+
+          setTimeout(() => {
+            submitText.textContent = "Send Message";
+            submitBtn.disabled = false;
+            statusEl.textContent = "Message sent! I'll get back to you soon.";
+            statusEl.className = "text-sm text-center h-4 text-emerald-400";
+            form.reset();
+
+            setTimeout(() => {
+              statusEl.textContent = "";
+            }, 4000);
+          }, 1100);
+        });
+
+        /* ---------- 8. Footer year ---------- */
+        document.getElementById("year").textContent = new Date().getFullYear();
+      });
+    </script>
+  </body>
+</html>
