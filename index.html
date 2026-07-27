@@ -13,7 +13,7 @@
     />
     <meta name="theme-color" content="#0a0a12" />
 
-    <!-- Favicon: inline code-bracket mark, no external file needed -->
+    <!-- Favicon -->
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a12'/%3E%3Ctext x='50' y='66' font-size='34' font-family='monospace' font-weight='700' fill='%23a78bfa' text-anchor='middle'%3E%26lt%3B%2F%26gt%3B%3C/text%3E%3C/svg%3E"
@@ -439,21 +439,6 @@
   <body
     class="overflow-x-hidden bg-base text-gray-300 font-sans antialiased noise-bg"
   >
-    <!--
-  ============================================================
-  📌 QUICK EDIT GUIDE — search for these and replace with your real info
-  ============================================================
-  "Your Name"                     → your full name (appears in several places)
-  "your.email@example.com"        → your real email
-  "Your City, Pakistan"           → your city
-  "Your University Name"          → your college / university
-  "yourusername" (in href links)  → your GitHub / LinkedIn username
-  "#resume-link"                  → link to your uploaded resume PDF
-  "#gallery-live" / "#gallery-repo"       → Task 1 (Image Gallery) links
-  "#calculator-live" / "#calculator-repo" → Task 2 (Calculator) links
-  ============================================================
--->
-
     <!-- Skip link for keyboard/screen-reader users -->
     <a
       href="#main"
@@ -1875,9 +1860,6 @@
             return;
           }
 
-          // NOTE: This is a UI-only simulation — no message is actually sent.
-          // To make this functional when you deploy, connect this form to a
-          // service like Formspree, EmailJS or your own backend endpoint.
           submitBtn.disabled = true;
           submitText.textContent = "Sending...";
 
